@@ -241,7 +241,7 @@ direnv allow .
 
 
 # Run op-geth
-echo "Running the node software"
+echo "Running the node software =======================================>>>>>>>>"
 
 nohup ./build/bin/geth --datadir ./datadir --http --http.corsdomain="*" --http.vhosts="*" --http.addr=0.0.0.0 --http.api=web3,debug,eth,txpool,net,engine --ws --ws.addr=0.0.0.0 --ws.port=8546 --ws.origins="*" --ws.api=debug,eth,txpool,net,engine --syncmode=full --gcmode=archive --nodiscover --maxpeers=0 --networkid=$CHAIN_ID --authrpc.vhosts="*" --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.jwtsecret=./jwt.txt --rollup.disabletxpoolgossip=true &
 
@@ -261,7 +261,7 @@ direnv allow .
 
 # Run op-node
 
-nohup ./bin/op-node 	--l2=http://localhost:8551 	--l2.jwt-secret=./jwt.txt 	--sequencer.enabled 	--sequencer.l1-confs=3 	--verifier.l1-confs=3 	--rollup.config=./rollup.json 	--rpc.addr=0.0.0.0 	--rpc.port=8547 	--p2p.disable 	--rpc.enable-admin 	--p2p.sequencer.key=$SEQ_KEY 	--l1=$ETH_RPC_URL 	--l1.rpckind=$RPC_KIND &
+nohup ./bin/op-node 	--l2=http://172.232.112.231:8551 	--l2.jwt-secret=./jwt.txt 	--sequencer.enabled 	--sequencer.l1-confs=3 	--verifier.l1-confs=3 	--rollup.config=./rollup.json 	--rpc.addr=0.0.0.0 	--rpc.port=8547 	--p2p.disable 	--rpc.enable-admin 	--p2p.sequencer.key=$SEQ_KEY 	--l1=$ETH_RPC_URL 	--l1.rpckind=$RPC_KIND &
 
 
 # setting up op-batcher
@@ -270,8 +270,8 @@ cd ../op-batcher
 direnv allow .
 
 # Run op-batcher
-echo "Running Batcher"
-nohup ./bin/op-batcher     --l2-eth-rpc=http://localhost:8545     --rollup-rpc=http://localhost:8547     --poll-interval=1s     --sub-safety-margin=6     --num-confirmations=1     --safe-abort-nonce-too-low-count=3     --resubmission-timeout=30s     --rpc.addr=0.0.0.0     --rpc.port=8548     --rpc.enable-admin     --max-channel-duration=1     --l1-eth-rpc=$L1_RPC     --private-key=$BATCHER_KEY &
+echo "Running Batcher =======================================>>>>>>>>"
+nohup ./bin/op-batcher     --l2-eth-rpc=http://172.232.112.231:8545     --rollup-rpc=http://172.232.112.231:8547     --poll-interval=1s     --sub-safety-margin=6     --num-confirmations=1     --safe-abort-nonce-too-low-count=3     --resubmission-timeout=30s     --rpc.addr=0.0.0.0     --rpc.port=8548     --rpc.enable-admin     --max-channel-duration=1     --l1-eth-rpc=$L1_RPC     --private-key=$BATCHER_KEY &
 
 
 # Setting up op-proposer
@@ -296,9 +296,9 @@ direnv allow .
 
 
 # Run op-proposer
-echo "Running Proposer"
+echo "Running Proposer =======================================>>>>>>>>"
 
-nohup ./bin/op-proposer     --poll-interval=12s     --rpc.port=8560     --rollup-rpc=http://localhost:8547     --l2oo-address=$L2OO_ADDR     --private-key=$PROPOSER_KEY     --l1-eth-rpc=$L1_RPC &
+nohup ./bin/op-proposer     --poll-interval=12s     --rpc.port=8560     --rollup-rpc=http://172.232.112.231:8547     --l2oo-address=$L2OO_ADDR     --private-key=$PROPOSER_KEY     --l1-eth-rpc=$L1_RPC &
 
 echo "Your OPStack chain $CHAIN_NAME created successfully"
 echo "RPC is running in the PORT 8545"
