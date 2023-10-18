@@ -261,7 +261,7 @@ direnv allow .
 
 # Run op-node
 
-nohup ./bin/op-node 	--l2=http://172.232.112.231:8551 	--l2.jwt-secret=./jwt.txt 	--sequencer.enabled 	--sequencer.l1-confs=3 	--verifier.l1-confs=3 	--rollup.config=./rollup.json 	--rpc.addr=0.0.0.0 	--rpc.port=8547 	--p2p.disable 	--rpc.enable-admin 	--p2p.sequencer.key=$SEQ_KEY 	--l1=$ETH_RPC_URL 	--l1.rpckind=$RPC_KIND &
+nohup ./bin/op-node 	--l2=http://139.144.5.228:8551 	--l2.jwt-secret=./jwt.txt 	--sequencer.enabled 	--sequencer.l1-confs=3 	--verifier.l1-confs=3 	--rollup.config=./rollup.json 	--rpc.addr=0.0.0.0 	--rpc.port=8547 	--p2p.disable 	--rpc.enable-admin 	--p2p.sequencer.key=$SEQ_KEY 	--l1=$ETH_RPC_URL 	--l1.rpckind=$RPC_KIND &
 
 
 # setting up op-batcher
@@ -271,7 +271,7 @@ direnv allow .
 
 # Run op-batcher
 echo "Running Batcher =======================================>>>>>>>>"
-nohup ./bin/op-batcher     --l2-eth-rpc=http://172.232.112.231:8545     --rollup-rpc=http://172.232.112.231:8547     --poll-interval=1s     --sub-safety-margin=6     --num-confirmations=1     --safe-abort-nonce-too-low-count=3     --resubmission-timeout=30s     --rpc.addr=0.0.0.0     --rpc.port=8548     --rpc.enable-admin     --max-channel-duration=1     --l1-eth-rpc=$L1_RPC     --private-key=$BATCHER_KEY &
+nohup ./bin/op-batcher     --l2-eth-rpc=http://139.144.5.228:8545     --rollup-rpc=http://139.144.5.228:8547     --poll-interval=1s     --sub-safety-margin=6     --num-confirmations=1     --safe-abort-nonce-too-low-count=3     --resubmission-timeout=30s     --rpc.addr=0.0.0.0     --rpc.port=8548     --rpc.enable-admin     --max-channel-duration=1     --l1-eth-rpc=$L1_RPC     --private-key=$BATCHER_KEY &
 
 
 # Setting up op-proposer
@@ -298,7 +298,7 @@ direnv allow .
 # Run op-proposer
 echo "Running Proposer =======================================>>>>>>>>"
 
-nohup ./bin/op-proposer     --poll-interval=12s     --rpc.port=8560     --rollup-rpc=http://172.232.112.231:8547     --l2oo-address=$L2OO_ADDR     --private-key=$PROPOSER_KEY     --l1-eth-rpc=$L1_RPC &
+nohup ./bin/op-proposer     --poll-interval=12s     --rpc.port=8560     --rollup-rpc=http://139.144.5.228:8547     --l2oo-address=$L2OO_ADDR     --private-key=$PROPOSER_KEY     --l1-eth-rpc=$L1_RPC &
 
 echo "Your OPStack chain $CHAIN_NAME created successfully"
 echo "RPC is running in the PORT 8545"
